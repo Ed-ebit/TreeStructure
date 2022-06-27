@@ -6,7 +6,7 @@ namespace TreeStructure.Tree
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public INode? Parent { get; } = null;
+        private INode? Parent { get; } = null;
 
         private readonly List<INode> children = new List<INode>();
 
