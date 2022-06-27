@@ -1,12 +1,12 @@
-﻿using TreeStructure.State;
+﻿using TreeStructure.Tree;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        State.Root.Render();
-        
-        
+        new Box().Render();
+
+
         //var box = new Box();
         //char choice = '0';
 
