@@ -7,5 +7,7 @@
         public void Render();
 
         public void AppendChild(INode child);
+
+        public uint getPrice();
     }
 }

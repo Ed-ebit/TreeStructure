@@ -78,6 +78,25 @@ namespace TreeStructure.Tree
 
             selectedOption.Handler();
         }
+        public uint getPrice()
+        {
+            uint addedContentPrices = 0;
+            if (children != null)
+            {
+                for (int i = 0; i < children.Count; i++)
+                {
+                    addedContentPrices += children[i].getPrice();
+                }
+            }
+            return addedContentPrices;
+        }
+
+        public void getPriceHandler()
+        {
+            Console.WriteLine(getPrice());
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+        }
 
         private IList<UIOption> GetUIOptions()
         {
@@ -86,8 +105,14 @@ namespace TreeStructure.Tree
                 new UIOption()
                 {
                     Key = "1",
-                    Text = "Add new children",
+                    Text = "Add Box",
                     Handler = ()=> {AppendChild(new Box(this)); }
+                },
+                new UIOption()
+                {
+                    Key = "2",
+                    Text = "Add Product",
+                    Handler = () => {AppendChild(new Product(this)); }
                 }
             };
 
@@ -95,9 +120,15 @@ namespace TreeStructure.Tree
             {
                 options.Add(new UIOption()
                 {
-                    Key = "2",
+                    Key = "3",
                     Text = "Navigate to child",
                     Handler = SelectChild
+                });
+                options.Add(new UIOption()
+                {
+                        Key = "4",
+                        Text = "Show combined Price of all products within all contained boxes",
+                        Handler = getPriceHandler
                 });
             }
 
@@ -105,7 +136,7 @@ namespace TreeStructure.Tree
             {
                 options.Add(new UIOption()
                 {
-                    Key = "3",
+                    Key = "5",
                     Text = "Navigate to parent",
                     Handler = Parent.Render
                 });
